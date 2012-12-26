@@ -1,10 +1,7 @@
 Jamboree Panels
 ===============
 
-author: Christian Salazar <christiansalazarh@gmail.com> 
-(bluyell nickname in yii,  twitter: @salazarchris74)
-
-An Html Layout Builder for Yii Framework, based on GWT (Google Web Toolkit).
+**An Html Layout Builder for Yii Framework, based on GWT (Google Web Toolkit).**
 
 I'm very glad to introduce this concept when building html for Yii Framework
 based applications, inspired in GWT (Google Web Toolkit), a nice designer for 
@@ -63,6 +60,10 @@ it will output:
 ![layout designed using Jamboree](https://bitbucket.org/christiansalazarh/jamboree/downloads/example.png "Layout designed using Jamboree")
 
 #Install Jamboree
+
+Jamboree resides in a Bitbucket repository, you can clone it using GIT, or simply, download it.
+
+[Bitbucket Jamboree GIT repository](https://bitbucket.org/christiansalazarh/jamboree/ "Bitbucket Jamboree Repo")
 
 Very simple. Please copy the entire package into your protected/extensions
 directory,  as an example: 
