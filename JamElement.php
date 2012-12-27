@@ -42,7 +42,7 @@ class JamElement extends CComponent {
 			'h1','h2','h3','h4','h5','h6',
 			'a','b','p','u','i',
 			'div','span','pre',
-			'select','option','textarea','label','ul','l','li'
+			'select','option','textarea','label','ul','l','li','button'
 		);
 		if(in_array($tag, $beginEndTags)){
 			if($boolWriteContent == true){
@@ -58,6 +58,139 @@ class JamElement extends CComponent {
 		}
 	}
 
+	// public helpers
+
+	public function setId($id){
+		$this->setHtmlOption('id',$id);
+	}
+
+	public function setTextAlignmentCenter(){
+		$this->addHtmlOption('style','text-align: center;');
+	}
+
+	public function setTextAlignmentLeft(){
+		$this->addHtmlOption('style','text-align: left;');
+	}
+
+	public function setTextAlignmentRight(){
+		$this->addHtmlOption('style','text-align: right;');
+	}
+
+	public function setWidth($strValue){
+		$this->addHtmlOption('style','width: '.$strValue);
+	}
+
+	public function setMinWidth($strValue){
+		$this->addHtmlOption('style','min-width: '.$strValue);
+	}
+
+	public function setHeight($strValue){
+		$this->addHtmlOption('style','height: '.$strValue);
+	}
+
+	public function setMinHeight($strValue){
+		$this->addHtmlOption('style','min-height: '.$strValue);
+	}
+
+	public function setSolidBorder($color='black',$size='1px'){
+		$this->addHtmlOption('style','border: '.$size.' solid '.$color);
+	}
+
+	public function setiDashedBorder($color='black',$size='1px'){
+		$this->addHtmlOption('style','border: '.$size.' dashed '.$color);
+	}
+
+	public function setDottedBorder($color='black',$size='1px'){
+		$this->addHtmlOption('style','border: '.$size.' dotted '.$color);
+	}
+	
+	public function setBorderNone(){
+		$this->addHtmlOption('style', 'border: none;');
+	}
+
+	public function setAutoMargin(){
+		$this->addHtmlOption('style','margin-left: auto; margin-right: auto;');
+	}
+	
+	public function setOverflowAuto(){
+		$this->addHtmlOption('style','overflow: auto;');	
+	}
+	public function setOverflowVisible(){
+		$this->addHtmlOption('style','overflow: visible;');	
+	}
+	public function setOverflowScroll(){
+		$this->addHtmlOption('style','overflow: scroll;');	
+	}
+	public function setOverflowHidden(){
+		$this->addHtmlOption('style','overflow: hidden;');	
+	}
+
+	public function addClass($className){
+		$this->addHtmlOption('class', $className);
+	}
+
+	public function setPadding($value){
+		$this->addHtmlOption('style','padding: '.$value);
+	}
+
+	public function setPaddingLeft($value){
+		$this->addHtmlOption('style','padding-left: '.$value);
+	}
+	public function setPaddingRight($value){
+		$this->addHtmlOption('style','padding-right: '.$value);
+	}
+	public function setPaddingTop($value){
+		$this->addHtmlOption('style','padding-top: '.$value);
+	}
+	public function setPaddingBottom($value){
+		$this->addHtmlOption('style','padding-bottom: '.$value);
+	}
+
+
+	public function setMarginLeft($value){
+		$this->addHtmlOption('style','margin-left: '.$value);
+	}
+	public function setMarginRight($value){
+		$this->addHtmlOption('style','margin-right: '.$value);
+	}
+	public function setMarginTop($value){
+		$this->addHtmlOption('style','margin-top: '.$value);
+	}
+	public function setMarginBottom($value){
+		$this->addHtmlOption('style','margin-bottom: '.$value);
+	}
+
+
+	// public methods
+
+	public function getHtmlOptions(){
+		if($this->_htmlOptions == null){
+			$this->_htmlOptions = array();
+		}
+		return $this->_htmlOptions;
+	}
+
+	public function setHtmlOption($name, $value){
+		$this->getHtmlOptions();
+		$this->_htmlOptions[$name] = trim($value,';');
+	}
+	public function addHtmlOption($name, $value){
+		$separator = ($name == 'style') ? ';' : ' ';
+		$this->setHtmlOption($name,
+			rtrim($this->getHtmlOption($name),$separator).$separator.
+				ltrim($value,$separator));
+	}
+
+	public function getHtmlOption($name){
+		$items = $this->getHtmlOptions();
+		if(array_key_exists($name, $items))
+			return $items[$name];
+		return "";
+	}
+
+
+	// private section
+
 	private function _renderBeginEndTag($tag){
 		$htopts = $this->getOpts();
 		if($htopts != '')
@@ -72,31 +205,6 @@ class JamElement extends CComponent {
 		return "<{$tag}{$htopts}/>";
 	}
 
-
-
-	public function getHtmlOptions(){
-		if($this->_htmlOptions == null){
-			$this->_htmlOptions = array();
-		}
-		return $this->_htmlOptions;
-	}
-
-	public function setHtmlOption($name, $value){
-		$this->getHtmlOptions();
-		$this->_htmlOptions[$name] = $value;
-	}
-	public function addHtmlOption($name, $value){
-		$this->setHtmlOption($name,
-			rtrim($this->getHtmlOption($name),';').';'.ltrim($value,';'));
-	}
-
-	public function getHtmlOption($name){
-		$items = $this->getHtmlOptions();
-		if(array_key_exists($name, $items))
-			return $items[$name];
-		return "";
-	}
-
 	private function getCleanTag(){
 		return trim(strtolower($this->tag));
 	}
@@ -106,6 +214,8 @@ class JamElement extends CComponent {
 			$htopts .= " {$key}='{$value}'";
 		return trim($htopts);
 	}
+
+	// static public
 
 	public static function publishAssets()
 	{

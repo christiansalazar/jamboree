@@ -26,8 +26,8 @@
  * @license http://opensource.org/licenses/bsd-license.php
  */
 class JamImage extends JamElement {
-	public function __construct($src, $alt=''){
-		parent::__construct('img','');
+	public function __construct($src, $alt='',$htmlOptions=array()){
+		parent::__construct('img','',$htmlOptions);
 		$this->setHtmlOption('src',$src);
 		$this->setHtmlOption('alt',$alt);
 	}

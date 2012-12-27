@@ -26,9 +26,15 @@
  * @license http://opensource.org/licenses/bsd-license.php
  */
 class JamVertPanel extends JamPanel {
-	public function __construct(){
-		parent::__construct();
+	public function __construct($tag='div'){
+		parent::__construct($tag);
 		$curClassName = $this->getHtmlOption('class');
 		$this->setHtmlOption('class',$curClassName.' jam-vert-panel');
+	}
+	public function add($obj, $boolApplyDefaultFloatStyle=true){
+		$obj = parent::add($obj);
+		if($boolApplyDefaultFloatStyle)
+			$obj->addHtmlOption('style','display: block;');
+		return $obj;
 	}
 }

@@ -12,7 +12,7 @@
  */
 abstract class JamPanel extends JamElement {
 	private $_list;
-	private $_childstyle;
+	private $_childHtmlOptions;
 
 	public $defaultStyle = 'margin: 3px; overflow: auto;';
 	public $defaultBorder = 'border: 1px dotted gray;';
@@ -20,9 +20,9 @@ abstract class JamPanel extends JamElement {
 	
 
 
-	public function __construct(){	
-		parent::__construct('div', '');
-		$this->_childstyle = '';
+	public function __construct($tag='div'){	
+		parent::__construct($tag, '');
+		$this->_childHtmlOptions = array();
 		$this->setHtmlOption('class','jam-panel');
 		$this->setHtmlOption('style',$this->defaultStyle);
 		$this->addHtmlOption('style',$this->defaultBorder);
@@ -35,14 +35,18 @@ abstract class JamPanel extends JamElement {
 			$obj = new JamElement("div",$obj);	
 			$obj->setHtmlOption('class','jam-element');
 		}
-		if($this->_childstyle != '')
-			$obj->addHtmlOption('style',$this->_childstyle);
+		foreach($this->_childHtmlOptions as $key=>$value)
+			$obj->addHtmlOption($key,$value);
 		$this->_list[] = $obj;
+		return $obj;
 	}
 
-	public function addChildStyle($style){
-		$this->_childstyle = rtrim($this->_childstyle,';')
-			.';'.ltrim($style,';');
+	public function addChildHtmlOptions($htmlOptions){
+		$this->_childHtmlOptions = $htmlOptions;		
+	}
+
+	public function clearChildHtmlOptions(){
+		$this->_childHtmlOptions = array();
 	}
 
 	private function getList(){
@@ -73,11 +77,6 @@ abstract class JamPanel extends JamElement {
 					}
 					$panel->setHtmlOption('class',$classes);
 				}
-				$forChilds = $this->getSpecialStyleForChilds();
-				if($forChilds != '')
-					$panel->setHtmlOption('style',
-						ltrim($panel->getHtmlOption('style')
-							.';'.$forChilds,';'));
 
 				$this->content .= $panel->render(false);
 				$is_first_panel = false;
