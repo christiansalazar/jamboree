@@ -41,10 +41,8 @@ $panel1->add('large text here');
 $lpanel->add(new JamImage('images/sample1.png'));
 $lpanel->add(CHtml::textArea('text at left built using CHtml','demo text'));
 
-// addChildStyle are styles applied to the future 'add' method calls.
-$panel2->addChildStyle('border: 3px solid gray; width: 150px; height: 100px;');
-$panel2->addChildStyle('text-align: center; margin: 3px;');
-// childs style are applied to this new elements:
+// styles applied to child elements when calling the 'add' method.
+$panel2->addChildHtmlOptions('border: 3px solid gray; width: 150px; height: 100px; text-align: center; margin: 3px;');
 $panel2->add(new JamElement("b","bold text"));
 $panel2->add(CHtml::image('images/sample2.png'));
 $panel2->add("simple raw text");
