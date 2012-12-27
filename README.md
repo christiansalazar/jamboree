@@ -11,6 +11,7 @@ classes.
 I will come to the point:
 
 Please consider the required HTML layout:
+
 ![required layout for your app](https://bitbucket.org/christiansalazarh/jamboree/downloads/example-layout.png "required layout for your app")
 
 Without using Jamboree you must create HTML and CSS well formed to be
@@ -61,16 +62,11 @@ it will output:
 
 #Install Jamboree
 
-Jamboree resides in a Bitbucket repository, you can clone it using GIT, or simply, download it.
-
-[Bitbucket Jamboree GIT repository](https://bitbucket.org/christiansalazarh/jamboree/ "Bitbucket Jamboree Repo")
-
-Very simple. Please copy the entire package into your protected/extensions
-directory,  as an example: 
+Please copy the entire package into your protected/extensions directory: 
 
 	/home/yours/app1/protected/extensions/jamboree
 
-now in your config/main.php file, put the extension visible for your Yii:
+now in your config/main.php file, put the extension visible:
 
 ~~~
 'import'=>array(
@@ -81,4 +77,4 @@ now in your config/main.php file, put the extension visible for your Yii:
 ),
 ~~~
 
-Enjoy it, please feel free to colaborate in my bitbucket repository.
+Enjoy it, please feel free to colaborate in this repository.
