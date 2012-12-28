@@ -133,6 +133,19 @@ class JamElement extends CComponent {
 		$this->addHtmlOption('style','padding: '.$value);
 	}
 
+	public function setColor($color){
+		$this->addHtmlOption('style','color: '.$color);
+	}
+
+	public function setBgColor($color){
+		$this->addHtmlOption('style','background-color: '.$color);
+	}
+
+	public function setDisplay($displayValue) {
+		$this->addHtmlOption('style','display: '.$displayValue);
+	}
+
+
 	public function setPaddingLeft($value){
 		$this->addHtmlOption('style','padding-left: '.$value);
 	}
