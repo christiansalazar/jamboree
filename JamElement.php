@@ -42,7 +42,8 @@ class JamElement extends CComponent {
 			'h1','h2','h3','h4','h5','h6',
 			'a','b','p','u','i',
 			'div','span','pre',
-			'select','option','textarea','label','ul','l','li','button'
+			'select','option','textarea','label','ul','l','li','button',
+			'table','tr','td'
 		);
 		if(in_array($tag, $beginEndTags)){
 			if($boolWriteContent == true){
@@ -172,6 +173,20 @@ class JamElement extends CComponent {
 	public function setMarginBottom($value){
 		$this->addHtmlOption('style','margin-bottom: '.$value);
 	}
+
+
+	public function setFloatLeft(){
+		$this->addHtmlOption('style','float: left;');
+	}
+
+	public function setFloatRight(){
+		$this->addHtmlOption('style','float: right;');
+	}
+
+	public function setFloatNone(){
+		$this->addHtmlOption('style','float: none;');
+	}
+
 
 
 	// public methods
