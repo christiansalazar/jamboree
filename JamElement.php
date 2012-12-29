@@ -25,13 +25,13 @@
  */
 class JamElement extends CComponent {
 	public $tag;
-	public $content;
+	private $_content; // use getContent()
 
 	private $_htmlOptions;
 
 	public function __construct($tag, $content='', $htmlOpts = array()){
 		$this->tag = $tag;
-		$this->content = $content;
+		$this->_content = $content;
 		$this->_htmlOptions = $htmlOpts;
 	}
 
@@ -216,6 +216,50 @@ class JamElement extends CComponent {
 		return "";
 	}
 
+	/**
+	 * getContent
+	 *	returns the element content, because an element->content can be
+	 *	raw text or another JamElement, so this method will return text
+	 *	in both cases: raw text or text comming from render() result.
+	 * 
+	 * @access public
+	 * @return string
+	 */
+	public function getContent(){
+		if($this->_content == null)	
+			return "";
+		if(is_object($this->_content)){
+			if(method_exists($this->_content,"render")){
+				return $this->_content->render(false);
+			}else{
+				return $this->_content;
+			}
+		}else
+			return $this->_content;
+	}
+
+	/**
+	 * setContent
+	 *  can be text or another JamElement
+	 * 
+	 * @param mixed $obj 
+	 * @access public
+	 * @return void
+	 */
+	public function setContent($obj){
+		if(is_string($obj)){
+			$this->_content = $obj;
+		}
+		else
+		$this->_content = $obj->render(false);
+	}
+	public function addContent($obj){
+		if(is_string($obj)){
+			$this->_content .= $obj;
+		}
+		else
+		$this->_content .= $obj->render(false);
+	}
 
 	// private section
 
@@ -223,7 +267,7 @@ class JamElement extends CComponent {
 		$htopts = $this->getOpts();
 		if($htopts != '')
 			$htopts = ' '.$htopts;
-		return "<{$tag}{$htopts}>".$this->content."</{$tag}>";
+		return "<{$tag}{$htopts}>".$this->getContent()."</{$tag}>";
 	}
 
 	private function _renderSingleTag($tag){

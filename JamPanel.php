@@ -61,11 +61,11 @@ abstract class JamPanel extends JamElement {
 	}
 
 	public function render($boolWriteContent=true){
-		$this->content = "";
+		$this->setContent("");
 		$is_first_panel = true;
 		foreach($this->getList() as $panel){
 			if(is_string($panel)){
-				$this->content .= $panel;
+				$this->addContent($panel);
 			}else{
 				if($is_first_panel){
 					// mark this panel as the first
@@ -78,7 +78,7 @@ abstract class JamPanel extends JamElement {
 					$panel->setHtmlOption('class',$classes);
 				}
 
-				$this->content .= $panel->render(false);
+				$this->addContent($panel);
 				$is_first_panel = false;
 			}
 		}
