@@ -200,7 +200,7 @@ class JamElement extends CComponent {
 
 	public function setHtmlOption($name, $value){
 		$this->getHtmlOptions();
-		$this->_htmlOptions[$name] = trim($value,';');
+		$this->_htmlOptions[$name] = trim(trim($value),';');
 	}
 	public function addHtmlOption($name, $value){
 		$separator = ($name == 'style') ? ';' : ' ';

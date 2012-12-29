@@ -31,7 +31,7 @@ abstract class JamPanel extends JamElement {
 
 	public function add($obj){
 		$this->getList();
-		if(is_string($obj)){
+		if(!is_object($obj)){
 			$obj = new JamElement("div",$obj);	
 			$obj->setHtmlOption('class','jam-element');
 		}

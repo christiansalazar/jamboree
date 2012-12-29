@@ -52,13 +52,14 @@ class JamTable extends JamVertPanel {
 	 * @param mixed $def 	see also row method
 	 * @param array $tdhtmlOptions see also row method
 	 * @access public
-	 * @return void
+	 * @return the new JamElement created (the TR row)
 	 */
 	public function head($def, $tdhtmlOptions = array()){
 		$tmp = $this->tdStyle;
 		$this->tdStyle = $this->headStyle;
-		$this->row($def, $tdhtmlOptions);
+		$obj = $this->row($def, $tdhtmlOptions);
 		$this->tdStyle = $tmp;
+		return $obj;
 	}	
 	
 	/**
@@ -78,7 +79,7 @@ class JamTable extends JamVertPanel {
 	 *
 	 * @param mixed $def definition for each TD
 	 * @param array $commonHtmlOptions  common htmlOptions for each TD
-	 * @return void
+	 * @return the new JamElement created (the TR row)
 	 */
 	public function row($def, $commonHtmlOptions = array())
 	{
@@ -108,6 +109,6 @@ class JamTable extends JamVertPanel {
 						$col->addHtmlOption($opt, $val);
 			}
 		}
-		$this->add($row, false);
+		return $this->add($row, false);
 	}
 }
