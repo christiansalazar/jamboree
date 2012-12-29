@@ -232,7 +232,7 @@ class JamElement extends CComponent {
 			if(method_exists($this->_content,"render")){
 				return $this->_content->render(false);
 			}else{
-				return $this->_content;
+				return "";
 			}
 		}else
 			return $this->_content;
@@ -247,18 +247,20 @@ class JamElement extends CComponent {
 	 * @return void
 	 */
 	public function setContent($obj){
-		if(is_string($obj)){
-			$this->_content = $obj;
-		}
-		else
-		$this->_content = $obj->render(false);
+		if(is_object($obj)){
+			if(method_exists($obj,"render"))
+				$this->_content = $obj->render(false);
+		}else
+		return $this->_content = $obj;
 	}
 	public function addContent($obj){
-		if(is_string($obj)){
-			$this->_content .= $obj;
-		}
-		else
-		$this->_content .= $obj->render(false);
+		if($this->_content == null)
+			$this->_content = "";
+		if(is_object($obj)){
+			if(method_exists($obj,"render"))
+				$this->_content .= $obj->render(false);
+		}else
+		return $this->_content .= $obj;
 	}
 
 	// private section
