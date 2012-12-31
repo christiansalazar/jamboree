@@ -26,15 +26,16 @@
  * @license http://opensource.org/licenses/bsd-license.php
  */
 class JamHorzPanel extends JamPanel {
+	
 	public function __construct($tag='div'){
 		parent::__construct($tag);
 		$curClassName = $this->getHtmlOption('class');
 		$this->setHtmlOption('class',$curClassName.' jam-horz-panel');
 	}
 
-	public function add($obj, $boolApplyDefaultFloatStyle=true){
+	public function add($obj, $boolApplyDefaultStyles=true){
 		$obj = parent::add($obj);
-		if($boolApplyDefaultFloatStyle)
+		if($boolApplyDefaultStyles == true)
 			$obj->addHtmlOption('style','float: left;');
 		return $obj;
 	}

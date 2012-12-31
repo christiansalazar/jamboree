@@ -31,7 +31,7 @@ class JamElement extends CComponent {
 
 	public function __construct($tag, $content='', $htmlOpts = array()){
 		$this->tag = $tag;
-		$this->_content = $content;
+		$this->setContent($content);
 		$this->_htmlOptions = $htmlOpts;
 	}
 
@@ -43,7 +43,8 @@ class JamElement extends CComponent {
 			'a','b','p','u','i',
 			'div','span','pre',
 			'select','option','textarea','label','ul','l','li','button',
-			'table','tr','td'
+			'table','tr','td',
+			'form','iframe'
 		);
 		if(in_array($tag, $beginEndTags)){
 			if($boolWriteContent == true){
@@ -207,6 +208,10 @@ class JamElement extends CComponent {
 		$this->setHtmlOption($name,
 			rtrim($this->getHtmlOption($name),$separator).$separator.
 				ltrim($value,$separator));
+	}
+	public function addHtmlOptions($htmlOptions){
+		foreach($htmlOptions as $opt=>$value)
+			$this->addHtmlOption($opt,$value);
 	}
 
 	public function getHtmlOption($name){

@@ -14,11 +14,9 @@ abstract class JamPanel extends JamElement {
 	private $_list;
 	private $_childHtmlOptions;
 
-	public $defaultStyle = 'margin: 3px; overflow: auto;';
+	public $defaultStyle = 'overflow: auto;';
 	public $defaultBorder = 'border: 1px dotted gray;';
 	public $defaultPadding = 'padding: 3px;';
-	
-
 
 	public function __construct($tag='div'){	
 		parent::__construct($tag, '');
