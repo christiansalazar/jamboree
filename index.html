@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jamboree : An html builder for your project. You can create html using pure php code based on Panels." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jamboree</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/christiansalazar/jamboree">View on GitHub</a>
+
+          <h1 id="project_title">Jamboree</h1>
+          <h2 id="project_tagline">An html builder for your project. You can create html using pure php code based on Panels.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/christiansalazar/jamboree/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/christiansalazar/jamboree/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Welcome to Jamboree.</h3>
+
+<p>Jamboree take its name from my dog. Using Jamboree you can build complex html code based on building panels. Jamboree is mainly for those applications built using Yii Framework, but with a minor effort you can easily incorporate it in your non-yii projects, so, please enjoy it.</p>
+
+<p>A little example about how to use Jamboree:</p>
+
+<p>Suppose you need this code in html:</p>
+
+<pre><code>&lt;div style='overflow: auto;'&gt;
+   &lt;div style='float: left;'&gt;1st panel, floating to the left&lt;/div&gt;
+   &lt;div style='float: left;'&gt;2nd panel...insert complex content here..&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>So, using Jamboree you can simplify it in this way:</p>
+
+<pre><code>$main = new JamHorzPanel();
+$main-&gt;add("1rst panel");
+$main-&gt;add("2nd panel");
+$main-&gt;render();
+</code></pre>
+
+<p>Please note, when you call the add method you can insert sub panels, and so on, in this way building complex html websites or forms like this one:</p>
+
+<p><img title="all this html layout was built using Jamboree, inclusive the background article gallery obscured by the fancybox." src="https://github.com/christiansalazar/jamboree/wiki/checkout-example.png">
+All this html layout (image above) was built using Jamboree, inclusive the background article gallery obscured by the fancybox.</p>
+
+<h3>Full Wiki and Examples</h3>
+
+<p>Please go to <a href="https://github.com/christiansalazar/jamboree/wiki">wiki</a>to find out detailed example code cases.</p>
+
+<h3>Authors and Contributors</h3>
+
+<p>Jamboree is developped by me (Christian Salazar), my email is <a href="mailto:christiansalazarh@gmail.com">christiansalazarh@gmail.com</a>.</p>
+
+<h3>Support and Issues</h3>
+
+<p>You can use Jamboree at your own, please checkout code comments for Licence.<br><a href="https://github.com/christiansalazar/jamboree/issues">Report your issues in this url.</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Jamboree maintained by <a href="https://github.com/christiansalazar">christiansalazar</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
