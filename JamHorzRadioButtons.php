@@ -35,6 +35,7 @@ class JamHorzRadioButtons extends JamHorzPanel {
 		}else{
 			$radio_id = $radioId;
 		}
+		$this->_count++;
 
 		$label = new JamElement('label',$labelText);	
 		$label->setHtmlOption('for',$radio_id);
