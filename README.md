@@ -61,6 +61,14 @@ it will output:
 
 ![layout designed using Jamboree](https://bitbucket.org/christiansalazarh/jamboree/downloads/example.png "Layout designed using Jamboree")
 
+
+#Real Examples:
+
+![real checkout example](wiki/checkout-example.png "real checkout")
+
+please check more examples at wiki.
+
+
 #Install Jamboree
 
 Please copy the entire package into your protected/extensions directory: 
