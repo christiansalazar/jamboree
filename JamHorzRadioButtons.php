@@ -28,13 +28,25 @@ class JamHorzRadioButtons extends JamHorzPanel {
 		$this->setBorderNone();
 	}
 
-	public function add($labelText, $radioId=null, $boolChecked=false) {
+	/**
+	 * add
+	 *	inserts a new radio button.
+	 *
+	 *		example:
+	 *
+	 *		$myradio = new JamHorzRadioButtons();
+	 *		$myradio->add('Blue','B');
+	 *		$myradio->add('Red','R');
+	 * 
+	 * @param mixed $labelText the radio label text
+	 * @param string $value the radio value
+	 * @param mixed $boolChecked true if this radio option must be checked
+	 * @access public
+	 * @return the full JamPanel created
+	 */
+	public function add($labelText, $value='X', $boolChecked=false) {
 		
-		if($radioId == null){
-			$radio_id = $this->_name.'_'.$this->_count;
-		}else{
-			$radio_id = $radioId;
-		}
+		$radio_id = $this->_name.'_'.$this->_count;
 		$this->_count++;
 
 		$label = new JamElement('label',$labelText);	
@@ -44,6 +56,7 @@ class JamHorzRadioButtons extends JamHorzPanel {
 		$input->setId($radio_id);
 		$input->setHtmlOption('name',$this->_name);
 		$input->setHtmlOption('type','radio');
+		$input->setHtmlOption('value',$value);
 		if($boolChecked == true)
 			$input->setHtmlOption('checked','checked');
 
