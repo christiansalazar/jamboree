@@ -5,7 +5,7 @@ Jamboree Panels
 
 Official Website: 
 
-[https://github.com/christiansalazar/jamboree](https://github.com/christiansalazar/jamboree "https://github.com/christiansalazar/jamboree")
+[http://christiansalazar.github.com/jamboree](http://christiansalazar.github.com/jamboree "http://christiansalazar.github.com/jamboree")
 
 See Examples and Show cases:
 
