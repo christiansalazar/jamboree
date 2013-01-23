@@ -44,7 +44,7 @@ class JamElement extends CComponent {
 			'div','span','pre',
 			'select','option','textarea','label','ul','l','li','button',
 			'table','tr','td',
-			'form','iframe'
+			'form','iframe','fieldset'
 		);
 		if(in_array($tag, $beginEndTags)){
 			if($boolWriteContent == true){
@@ -209,10 +209,15 @@ class JamElement extends CComponent {
 			rtrim($this->getHtmlOption($name),$separator).$separator.
 				ltrim($value,$separator));
 	}
+	public function setHtmlOptions($htmlOptions){
+		foreach($htmlOptions as $opt=>$value)
+			$this->setHtmlOption($opt,$value);
+	}
 	public function addHtmlOptions($htmlOptions){
 		foreach($htmlOptions as $opt=>$value)
 			$this->addHtmlOption($opt,$value);
 	}
+
 
 	public function getHtmlOption($name){
 		$items = $this->getHtmlOptions();
@@ -289,8 +294,11 @@ class JamElement extends CComponent {
 	}
 	private function getOpts(){
 		$htopts = "";
-		foreach($this->htmlOptions as $key=>$value)
-			$htopts .= " {$key}='{$value}'";
+		foreach($this->htmlOptions as $key=>$value){
+			$v = trim($value);
+			if($v != '')
+				$htopts .= " {$key}='{$v}'";
+		}
 		return trim($htopts);
 	}
 
